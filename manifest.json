@@ -2,8 +2,8 @@
 	"_version": "1.1.0",
 	"sap.app": {
 		"_version": "1.1.0",
-		"id": "sapui5-exploration",
-		"type": "application",		
+		"id": "app",
+		"type": "application",
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"applicationVersion": {
@@ -25,10 +25,7 @@
   	},
   	"sap.ui5": {
 		"_version": "1.1.0",
-		"rootView": {
-			"viewName": "view.mainView",
-			"type": "JS"
-		},
+		"rootView": "view.app",
 		"dependencies": {
 			"minUI5Version": "1.30",
 			"libs": {

@@ -7,7 +7,7 @@ sap.ui.define([
 
 	var core = sap.ui.getCore();
 
-	return Controller.extend("controler.mainView", {
+	return Controller.extend("controler.mainControler", {
 
 /**
 * Called when a controller is instantiated and its View controls (if available) are already created.
@@ -65,16 +65,16 @@ sap.ui.define([
 		*/
 		onInputChanged: function() {
 			// read msg from i18n model
-	         var oBundle = this.getView().getModel("i18n").getResourceBundle();
-	         var sRecipient = this.getView().getModel().getProperty("/recipient/name");
-//	         var sRecipient = sap.ui.getCore().byId('input1').getValue();
-//	         var sRecipient = core.byId('input1').getValue();
-	         var sMsg = oBundle.getText("helloMsg", [sRecipient, "today"]);
-	         // show message
-	         MessageToast.show(sMsg, {
-					duration: 2000,
-					animationDuration: 500
-	         });
+	        var oBundle = this.getView().getModel("i18n").getResourceBundle();
+	        var sRecipient = this.getView().getModel().getProperty("/recipient/name");
+//	        var sRecipient = sap.ui.getCore().byId('input1').getValue();
+//	        var sRecipient = core.byId('input1').getValue();
+	        var sMsg = oBundle.getText("helloMsg", [sRecipient, "today"]);
+	        // show message
+	        MessageToast.show(sMsg, {
+				duration: 2000,
+				animationDuration: 500
+	        });
 		}
 	});
 });

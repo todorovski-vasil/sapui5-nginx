@@ -5,7 +5,7 @@ sap.ui.jsview("view.mainView", {
 	* @memberOf sapui5-exploration.view.mainView
 	*/
 	getControllerName : function() {
-		return "controler.mainView";
+		return "controler.mainControler";
 	},
 
 	/** Is initially called once after the Controller has been instantiated. It is the place where the UI is constructed.
@@ -61,6 +61,9 @@ sap.ui.jsview("view.mainView", {
 				panel
 			]
 		}).addStyleClass('idPage');
+
+		// var view2 = sap.ui.getCore().('view.view2');
+		// page.addContent(view2);
 
 		return new sap.m.App({
 			pages : page
