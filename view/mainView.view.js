@@ -15,6 +15,7 @@ sap.ui.jsview("view.mainView", {
 	createContent : function(oController) {
 		var buttonGoToPage2 = new sap.m.Button('btn',{
 	    	text : "Go to Page 2",
+			class : "sapUiSmallMarginEnd",
 			press : function() {
 				oController.onGoToPage2_pressed()
 			}
@@ -22,13 +23,30 @@ sap.ui.jsview("view.mainView", {
 
 		var inputField = new sap.m.Input("input1", {
 			value : "{/recipient/name}",
-			description : "Hello {/recipient/name}",
+			// description : "Hello {/recipient/name}",
 			valueLiveUpdate : true,
 			width : "60%",
 			liveChange : function() {
 				oController.onInputChanged()
 			}
 		});
+
+		var text = new sap.m.Text({
+			text : "Hello {/recipient/name}",
+			class : "sapUiSmallMargin"
+		});
+
+		var panel = new sap.m.Panel("panel",{
+			headerText : "{i18n>helloPanelTitle}",
+			class : "sapUiResponsiveMargin",
+			width : "auto",
+			content : [
+				buttonGoToPage2,
+				inputField,
+				text
+			]
+		});
+
 
 //		var page = new sap.m.Page({
 //			title: "naslov"
@@ -37,15 +55,15 @@ sap.ui.jsview("view.mainView", {
 //		page.addContent(inputField);
 //		return page;
 		var page = new sap.m.Page('idPage',{
-			title: "{i18n>title}",
-			content: [
-			          buttonGoToPage2,
-			          inputField
-			          ]
+			// title: "{i18n>title}",
+			title : "{i18n>homePageTitle}",
+			content : [
+				panel
+			]
 		}).addStyleClass('idPage');
-		return new sap.m.App({
-			pages: page
-		});
 
+		return new sap.m.App({
+			pages : page
+		});
 	}
 });
