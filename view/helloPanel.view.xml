@@ -1,5 +1,5 @@
 <mvc:View
-	controllerName="controler.helloPanel"
+	controllerName="controler.mainControler"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc">
 	<Panel
@@ -9,7 +9,7 @@
 		<content>
 			<Button
 				text="{i18n>showHelloButtonText}"
-				press="onShowHello"
+				press="onGoToPage2_pressed"
 				class="myAppDemoWT myCustomButton"/>
 			<Input
 				value="{/recipient/name}"

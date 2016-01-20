@@ -55,8 +55,10 @@ sap.ui.define([
 */
 		onGoToPage2_pressed: function () {
 			// navigate to page2
-			var app = this.getView();
-			app.to("view.view2");
+			// var app = this.getView();
+			// app.to("view.view2");
+			var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+			oRouter.navTo("detail");
 		},
 
 		/**

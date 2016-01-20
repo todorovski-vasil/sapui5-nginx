@@ -13,54 +13,58 @@ sap.ui.jsview("view.mainView", {
 	* @memberOf sapui5-exploration.controler.mainView
 	*/
 	createContent : function(oController) {
-		var buttonGoToPage2 = new sap.m.Button('btn',{
-	    	text : "Go to Page 2",
-			class : "sapUiSmallMarginEnd",
-			press : function() {
-				oController.onGoToPage2_pressed()
-			}
-		});
+		var ch = sap.ui.getCore().byId('btn');
+		if (ch == undefined) {
+			var buttonGoToPage2 = new sap.m.Button('btn',{
+		    	text : "Go to Page 2",
+				class : "sapUiSmallMarginEnd",
+				press : function() {
+					oController.onGoToPage2_pressed()
+				}
+			});
+			var inputField = new sap.m.Input("input1", {
+				value : "{/recipient/name}",
+				// description : "Hello {/recipient/name}",
+				valueLiveUpdate : true,
+				width : "60%",
+				liveChange : function() {
+					oController.onInputChanged()
+				}
+			});
 
-		var inputField = new sap.m.Input("input1", {
-			value : "{/recipient/name}",
-			// description : "Hello {/recipient/name}",
-			valueLiveUpdate : true,
-			width : "60%",
-			liveChange : function() {
-				oController.onInputChanged()
-			}
-		});
+			var text = new sap.m.Text({
+				text : "Hello {/recipient/name}",
+				class : "sapUiSmallMargin"
+			});
 
-		var text = new sap.m.Text({
-			text : "Hello {/recipient/name}",
-			class : "sapUiSmallMargin"
-		});
-
-		var panel = new sap.m.Panel("panel",{
-			headerText : "{i18n>helloPanelTitle}",
-			class : "sapUiResponsiveMargin",
-			width : "auto",
-			content : [
-				buttonGoToPage2,
-				inputField,
-				text
-			]
-		});
+			var panel = new sap.m.Panel("panel",{
+				headerText : "{i18n>helloPanelTitle}",
+				class : "sapUiResponsiveMargin",
+				width : "auto",
+				content : [
+					buttonGoToPage2,
+					inputField,
+					text
+				]
+			});
 
 
-//		var page = new sap.m.Page({
-//			title: "naslov"
-//		});
-//		page.addContent(buttonGoToPage2);
-//		page.addContent(inputField);
-//		return page;
-		var page = new sap.m.Page('idPage',{
-			// title: "{i18n>title}",
-			title : "{i18n>homePageTitle}",
-			content : [
-				panel
-			]
-		}).addStyleClass('idPage');
+	//		var page = new sap.m.Page({
+	//			title: "naslov"
+	//		});
+	//		page.addContent(buttonGoToPage2);
+	//		page.addContent(inputField);
+	//		return page;
+			var page = new sap.m.Page('idPage',{
+				// title: "{i18n>title}",
+				title : "{i18n>homePageTitle}",
+				content : [
+					panel
+				]
+			}).addStyleClass('idPage');
+
+		}
+
 
 		// var view2 = sap.ui.getCore().('view.view2');
 		// page.addContent(view2);
